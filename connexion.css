@@ -1,0 +1,16 @@
+
+.login-form {
+    border: 5px solid black;
+    height: 300px;
+    width:500px;
+}
+.register-form{
+    border: 5px solid black;
+    height: 300px;
+    width:500px;
+
+}
+
+form {
+    width:100%;
+}
