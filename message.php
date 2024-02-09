@@ -31,7 +31,7 @@ $associated_users_result = $db->query($associated_users_query);
 
 
 
-
+echo '<div style="display: flex; justify-content: center; margin: 50px;">';
 echo '<div style="width: 500px; height: 500px; border: 1px solid black; overflow: auto;text-align: center, justify-content: center; align-item: center;">';
 // Parcourir chaque paire d'utilisateurs
 while ($row = $associated_users_result->fetch(PDO::FETCH_ASSOC)) {
@@ -76,7 +76,7 @@ while ($row = $associated_users_result->fetch(PDO::FETCH_ASSOC)) {
         echo "<p>From " . $message['sender'] . " : " . $message['messages'] . "</p>";
     }
     echo '</div>';
-
+    
     
         
 
@@ -90,7 +90,7 @@ while ($row = $associated_users_result->fetch(PDO::FETCH_ASSOC)) {
     echo "</form>";
 }
 echo '</div>';echo '</div>';
-
+echo '</div>';
 
 // Placer le code JavaScript à la fin du corps de la page
 echo '<script>';

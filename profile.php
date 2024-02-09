@@ -82,29 +82,33 @@ if ($image_content !== null) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js"></script>
     <script>
         document.getElementById('imageInput').addEventListener('change', function(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var image = document.getElementById('croppedImage');
-                image.src = e.target.result;
-                // Initialize cropper.js on the image
-                var cropper = new Cropper(image, {
-                    aspectRatio: 1, // Set the aspect ratio for cropping
-                    viewMode: 1, // Set the view mode for cropping
-                    autoCropArea: 1, // Set the auto crop area to 100% (to crop the entire image)
-                    crop: function(event) {
-                        // Update the cropped image result
-                        var canvas = cropper.getCroppedCanvas({
-                            width: 400, // Set the width of the cropped image to 400px
-                            height: 400, // Set the height of the cropped image to 400px
-                        });
-                        // Replace the original image with the cropped image
-                        image.src = canvas.toDataURL();
-                    }
-                });
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var image = document.getElementById('croppedImage');
+            // Reset the previous cropper instance
+            if (typeof cropper !== 'undefined') {
+                cropper.destroy();
             }
-            reader.readAsDataURL(file);
-        });
+            image.src = e.target.result;
+            // Initialize cropper.js on the image
+            cropper = new Cropper(image, {
+                aspectRatio: 1, // Set the aspect ratio for cropping
+                viewMode: 1, // Set the view mode for cropping
+                autoCropArea: 1, // Set the auto crop area to 100% (to crop the entire image)
+                crop: function(event) {
+                    // Update the cropped image result
+                    var canvas = cropper.getCroppedCanvas({
+                        width: 400, // Set the width of the cropped image to 400px
+                        height: 400, // Set the height of the cropped image to 400px
+                    });
+                    // Replace the original image with the cropped image
+                    image.src = canvas.toDataURL();
+                }
+            });
+        }
+    reader.readAsDataURL(file);
+});
     </script>
 
 <?php

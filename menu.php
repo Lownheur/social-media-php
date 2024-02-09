@@ -184,7 +184,7 @@ $associated_users_query = "SELECT DISTINCT sender, receiver
                            FROM message 
                            WHERE sender = '$current_user' OR receiver = '$current_user'";
 $associated_users_result = $db->query($associated_users_query);
-echo '<div style="width: 300px; height: 500px; border: 1px solid black; overflow: auto;text-align: center">';
+/* echo '<div style="width: 300px; height: 500px; border: 1px solid black; overflow: auto;text-align: center">';
 // Parcourir chaque paire d'utilisateurs
 while ($row = $associated_users_result->fetch(PDO::FETCH_ASSOC)) {
     $other_user = ($row['sender'] !== $current_user) ? $row['sender'] : $row['receiver'];
@@ -213,7 +213,10 @@ while ($row = $associated_users_result->fetch(PDO::FETCH_ASSOC)) {
     echo "<input type='submit' name='submit_button' value='Send'>";
     echo "</form>";
 }
-echo '</div>';echo '</div>';
+echo '</div>';*/
+echo '</div>';
+
+
 echo "</div id='ajax' style='border : 1px solid black;'> <br>";
 
 
